@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generative AI for Leaders and Managers - Preview Edition</title>
+    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Merriweather', serif;
+            color: #333333; /* Primary Text Color */
+            line-height: 1.6; /* Line Height */
+            margin: 0;
+            padding: 0;
+            background-color: #fdfdfd;
+        }
+        .container {
+            max-width: 800px;
+            margin: 20px auto;
+            padding: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            color: #003366; /* Heading Color */
+            margin-top: 1.5em;
+            margin-bottom: 0.5em;
+        }
+        p {
+            margin-bottom: 1.2em; /* Paragraph Spacing */
+        }
+        ul {
+            margin-bottom: 1.2em;
+            padding-left: 25px;
+        }
+        li {
+            margin-bottom: 0.5em;
+        }
+        .center-text {
+            text-align: center;
+        }
+        .title-page-icon {
+            font-size: 48pt; /* Prominent icon */
+            text-align: center;
+            margin-bottom: 0.5em;
+        }
+        .book-title {
+            font-weight: 700; /* Bold */
+            font-size: 36pt;
+            text-align: center;
+            color: #003366;
+            margin-bottom: 0.2em;
+        }
+        .book-subtitle {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 400; /* Regular */
+            font-size: 18pt;
+            text-align: center;
+            color: #333333;
+            margin-bottom: 2em;
+        }
+        .section-divider-icon {
+            font-size: 30pt; /* Prominent icon */
+            text-align: left;
+            margin-bottom: 0.3em;
+        }
+        .section-heading {
+            font-weight: 600; /* Semi-Bold */
+            font-size: 20pt;
+            color: #003366;
+            text-transform: uppercase;
+            margin-bottom: 0.8em;
+        }
+        .intro-paragraph {
+            font-family: 'Merriweather', serif;
+            font-size: 11pt;
+            color: #333333;
+        }
+        .module-icon-title {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600; /* Semi-Bold */
+            font-size: 18pt;
+            color: #003366;
+            margin-bottom: 0.8em;
+        }
+        .module-icon-title .icon {
+            color: #6699CC; /* Accent Color for icon part */
+            margin-right: 0.3em;
+        }
+        .module-body-text {
+            font-family: 'Merriweather', serif;
+            font-size: 11pt;
+            color: #333333;
+        }
+        .design-note {
+            border-left: 4px solid #6699CC; /* Accent Color border */
+            padding-left: 15px;
+            margin: 1.5em 0;
+            background-color: #f9f9f9;
+        }
+        .design-note .icon {
+            font-size: 14pt;
+            color: #6699CC; /* Accent Color */
+            margin-right: 5px;
+        }
+        .design-note-label {
+            font-family: 'Open Sans', sans-serif;
+            font-weight: 700; /* Bold */
+            font-size: 10pt;
+            color: #6699CC; /* Accent Color */
+        }
+        .design-note-text {
+            font-family: 'Open Sans', sans-serif; /* Can also be Merriweather */
+            font-style: italic;
+            font-size: 10pt;
+            color: #333333; /* Primary Text Color */
+        }
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 1.2em;
+            font-size: 10pt;
+        }
+        th, td {
+            border: 1px solid #CCCCCC; /* Subtle, thin lines */
+            padding: 10px;
+            text-align: left;
+            font-family: 'Merriweather', serif;
+            color: #333333;
+        }
+        th {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 500; /* Medium (using 500 for medium, often a good match) */
+            font-size: 11pt;
+            background-color: #E6F0FA; /* Light accent color fill */
+            color: #003366; /* Heading Color */
+        }
+        .who-should-read-list {
+            list-style-type: none;
+            padding-left: 0;
+        }
+        .who-should-read-list li {
+            font-family: 'Merriweather', serif;
+            font-size: 11pt;
+        }
+        .who-should-read-list strong {
+            font-weight: 700; /* Bold */
+        }
+        .cta-heading {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600; /* Semi-Bold */
+            font-size: 18pt;
+            color: #28a745; /* CTA Color */
+            margin-bottom: 0.8em;
+        }
+        .cta-heading .icon {
+            margin-right: 0.3em;
+        }
+        .cta-text {
+            font-family: 'Merriweather', serif;
+            font-size: 11pt;
+            color: #333333;
+        }
+        .cta-action-statement {
+            font-family: 'Montserrat', sans-serif; /* Or Merriweather Bold */
+            font-weight: 700; /* Bold or Semi-Bold */
+            font-size: 13pt;
+            color: #28a745; /* CTA Color */
+            text-align: center;
+            margin-top: 1em;
+        }
+        .cta-action-statement .icon {
+             margin-right: 0.3em;
+        }
+        hr.module-divider {
+            border: 0;
+            height: 1px;
+            background-color: #e0e0e0;
+            margin: 2.5em 0;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="title-page-icon">📘</div>
+        <h1 class="book-title">Generative AI for Leaders and Managers</h1>
+        <p class="book-subtitle">Preview Edition: Understand, Strategize, Implement</p>
+
+        <hr class="module-divider">
+
+        <div class="section-divider-icon">🧠</div>
+        <h2 class="section-heading">INTRODUCTION</h2>
+        <p class="intro-paragraph">
+        Generative AI marks a paradigm shift—not just in technology but in how leaders must think, operate, and compete. Its ability to generate original content and drive autonomous decision-making creates new imperatives for leadership.
+        </p>
+        <p class="intro-paragraph">
+        This guide equips you to navigate this shift. It’s a strategic briefing for those who don’t just want to adopt AI—but lead with it.
+        </p>
+
+        <hr class="module-divider">
+
+        <h3 class="module-icon-title"><span class="icon">🔍</span>MODULE 1: What is Generative AI?</h3>
+        <p class="module-body-text">
+        Generative AI doesn’t just automate—it creates. Whether it’s generating written content, visual art, code, or even music, GenAI systems simulate creativity using advanced neural networks.
+        </p>
+        <p class="module-body-text">At its core:</p>
+        <ul>
+            <li>GenAI leverages deep learning models like GPT (text), GANs (images), and diffusion models.</li>
+            <li>It enables content generation at scale, 24/7, without burnout or bias (when properly designed).</li>
+            <li>It is redefining value creation in knowledge work.</li>
+        </ul>
+        <div class="design-note">
+            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Insert symbolic image of a neural network forming creative digital shapes or code blocks “growing” like a tree.</span></p>
+        </div>
+
+        <hr class="module-divider">
+
+        <h3 class="module-icon-title"><span class="icon">⚙️</span>MODULE 2: How It Works</h3>
+        <p class="module-body-text">
+        Generative AI is built on transformers, encoder-decoder architectures, and reinforcement learning.
+        </p>
+        <p class="module-body-text">Core concepts:</p>
+        <ul>
+            <li>Transformers enable the model to learn language, logic, and structure.</li>
+            <li>GANs (Generative Adversarial Networks) pit two networks against each other—one generates, the other critiques.</li>
+            <li>Diffusion models refine noisy data into clear outputs.</li>
+            <li>RLHF (Reinforcement Learning with Human Feedback) ensures alignment with human values.</li>
+        </ul>
+        <div class="design-note">
+            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Symbolic visual of two networks “competing” or a transformer architecture turning data into art.</span></p>
+        </div>
+
+        <hr class="module-divider">
+
+        <h3 class="module-icon-title"><span class="icon">🏭</span>MODULE 3: Industry Applications</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Industry</th>
+                    <th>AI Use Cases</th>
+                    <th>Strategic Wins</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Finance</td>
+                    <td>Risk modeling, report gen.</td>
+                    <td>Faster decisions, fewer errors</td>
+                </tr>
+                <tr>
+                    <td>Healthcare</td>
+                    <td>Drug discovery, diagnostics</td>
+                    <td>Faster R&D, better outcomes</td>
+                </tr>
+                <tr>
+                    <td>Marketing</td>
+                    <td>Ad copy, SEO, chatbots</td>
+                    <td>Higher engagement/conversions</td>
+                </tr>
+                <tr>
+                    <td>Operations</td>
+                    <td>Process optimization</td>
+                    <td>Reduced costs, improved scale</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="design-note">
+            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Abstract icon montage (finance, health, marketing) infused with tech overlays.</span></p>
+        </div>
+
+        <hr class="module-divider">
+
+        <h3 class="module-icon-title"><span class="icon">🧭</span>MODULE 4: Strategy & Implementation</h3>
+        <p class="module-body-text">
+        Generative AI requires deliberate integration, not experimentation alone.
+        </p>
+        <p class="module-body-text">Strategic steps:</p>
+        <ul>
+            <li>Use frameworks like Azure AI Maturity Model or B EYE to assess readiness.</li>
+            <li>Align GenAI initiatives with KPIs.</li>
+            <li>Build infrastructure, train internal AI champions, and launch low-risk pilot projects.</li>
+        </ul>
+        <div class="design-note">
+            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Corporate AI roadmap graphic with nodes like “Strategy,” “Pilot,” “Scale.”</span></p>
+        </div>
+
+        <hr class="module-divider">
+
+        <h3 class="module-icon-title"><span class="icon">🔁</span>MODULE 5: Change Management</h3>
+        <p class="module-body-text">
+        Transformation succeeds only if your people move with it.
+        </p>
+        <p class="module-body-text">Proven frameworks:</p>
+        <ul>
+            <li>ADKAR: Awareness, Desire, Knowledge, Ability, Reinforcement.</li>
+            <li>Kotter’s 8 Steps: Mobilize change, empower teams, reinforce wins.</li>
+        </ul>
+        <p class="module-body-text">
+        Culture-building is not optional—it’s the foundation of sustained AI transformation.
+        </p>
+        <div class="design-note">
+            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Symbolic ladder or cycle of transformation steps, human silhouettes ascending.</span></p>
+        </div>
+
+        <hr class="module-divider">
+
+        <h3 class="module-icon-title"><span class="icon">⚖️</span>MODULE 6: Ethics and Governance</h3>
+        <p class="module-body-text">
+        Without trust, AI fails.
+        </p>
+        <p class="module-body-text">As GenAI scales, leaders must enforce:</p>
+        <ul>
+            <li>Bias mitigation</li>
+            <li>Data privacy</li>
+            <li>Transparent governance</li>
+        </ul>
+        <p class="module-body-text">
+        Establish an AI Ethics Board. Train your workforce in responsible AI practices.
+        </p>
+        <div class="design-note">
+            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Blindfolded AI statue holding balance scales over a glowing neural web.</span></p>
+        </div>
+
+        <hr class="module-divider">
+
+        <h3 class="module-icon-title"><span class="icon">🔮</span>MODULE 7: The Future of Work</h3>
+        <p class="module-body-text">
+        Work won’t disappear—it will evolve.
+        </p>
+        <p class="module-body-text">Expect:</p>
+        <ul>
+            <li>Agentic AI systems that initiate, not just respond.</li>
+            <li>Multimodal tools that understand text, image, voice, and behavior.</li>
+            <li>Teams shifting from task-doers to AI-augmented thinkers.</li>
+        </ul>
+        <p class="module-body-text">
+        Your competitive edge? How fast you adapt.
+        </p>
+        <div class="design-note">
+            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Symbolic human+AI figure merging or collaborating, abstract digital assistant motif.</span></p>
+        </div>
+
+        <hr class="module-divider">
+
+        <h3 class="module-icon-title"><span class="icon">👥</span>WHO SHOULD READ THIS?</h3>
+        <ul class="who-should-read-list">
+            <li><strong>C-Level Execs:</strong> Make strategic decisions rooted in AI awareness.</li>
+            <li><strong>Ops Leaders:</strong> Optimize and automate responsibly.</li>
+            <li><strong>HR & L&D:</strong> Build AI literacy and adaptive cultures.</li>
+            <li><strong>Innovation Heads:</strong> Lead pilots, test models, scale impact.</li>
+        </ul>
+
+        <hr class="module-divider">
+
+        <h3 class="cta-heading"><span class="icon">✅</span>CALL TO ACTION</h3>
+        <p class="cta-text">
+        Want the full version with:
+        </p>
+        <ul>
+            <li>Templates</li>
+            <li>Implementation blueprints</li>
+            <li>Case studies & vendor selection guides?</li>
+        </ul>
+        <p class="cta-action-statement">
+        <span class="icon">📩</span>Just say “Send me the full version” and we’ll prepare it for you.
+        </p>
+
+    </div>
+</body>
+</html>
