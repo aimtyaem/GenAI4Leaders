@@ -1,4 +1,4 @@
-# ✅ Refined Outline for “GenAI for Leaders and Managers”
+# ✅ GenAI for Leaders and Managers
 
 ---
 
@@ -86,7 +86,7 @@
 
 ---
 
-## Appendices (Optional for Full Edition)
+## Appendices 
 - Templates:  
   - Strategy canvas  
   - Vendor checklist  
