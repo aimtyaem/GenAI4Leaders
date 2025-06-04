@@ -1,4 +1,3 @@
-```markdown
 # ✅ Refined Outline for “GenAI for Leaders and Managers”
 
 ---
