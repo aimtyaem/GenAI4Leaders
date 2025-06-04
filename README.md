@@ -1,4 +1,4 @@
-# ✅ GenAI for Leaders and Managers
+# GenAI for Leaders and Managers
 
 ---
 
@@ -8,7 +8,8 @@
 - Definition & evolution from automation to creation  
 - Overview of types:  
   - Text (GPT)  
-  - Visual (GANs)  
+  - Visual (GANs)
+  - Live 
   - Audio  
   - Code  
 - Benefits for leaders: creativity, speed, scalability  
