@@ -180,9 +180,111 @@
             margin: 2.5em 0;
         }
 
+        /* New Navigation Styles */
+        .navbar {
+            background-color: #003366;
+            padding: 15px 0;
+            margin-bottom: 20px;
+            border-radius: 5px;
+        }
+        .nav-container {
+            max-width: 800px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 0 20px;
+        }
+        .nav-logo {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            font-size: 18px;
+            text-decoration: none;
+        }
+        .nav-menu {
+            display: flex;
+            list-style: none;
+            margin: 0;
+            padding: 0;
+        }
+        .nav-item {
+            margin-left: 20px;
+        }
+        .nav-link {
+            color: white;
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 600;
+            text-decoration: none;
+            padding: 8px 15px;
+            border-radius: 4px;
+            transition: background-color 0.3s;
+        }
+        .nav-link:hover {
+            background-color: rgba(255, 255, 255, 0.1);
+        }
+        .nav-link.chatbot {
+            background-color: #28a745;
+        }
+        .nav-link.chatbot:hover {
+            background-color: #218838;
+        }
+        .hamburger {
+            display: none;
+            cursor: pointer;
+            color: white;
+            font-size: 24px;
+        }
+
+        /* Mobile Responsive Styles */
+        @media screen and (max-width: 768px) {
+            .nav-menu {
+                position: fixed;
+                left: -100%;
+                top: 70px;
+                flex-direction: column;
+                background-color: #003366;
+                width: 100%;
+                text-align: center;
+                transition: 0.3s;
+                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
+                z-index: 1000;
+            }
+            .nav-menu.active {
+                left: 0;
+            }
+            .nav-item {
+                margin: 15px 0;
+            }
+            .hamburger {
+                display: block;
+            }
+        }
     </style>
 </head>
 <body>
+    <!-- Navigation Menu -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <a href="index.html" class="nav-logo">AI Leadership</a>
+            <ul class="nav-menu">
+                <li class="nav-item">
+                    <a href="index.html" class="nav-link">Home</a>
+                </li>
+                <li class="nav-item">
+                    <a href="chat.html" class="nav-link">AI Chat</a>
+                </li>
+                <li class="nav-item">
+                    <a href="https://notebooklm.google.com/notebook/4353c083-1b86-46f6-83e5-8205d599ff2e" 
+                       class="nav-link chatbot" target="_blank">AI Leadership Chatbot</a>
+                </li>
+            </ul>
+            <div class="hamburger">
+                ☰
+            </div>
+        </div>
+    </nav>
+
     <div class="container">
         <div class="title-page-icon">📘</div>
         <h1 class="book-title">Generative AI for Leaders and Managers</h1>
@@ -196,14 +298,14 @@
         Generative AI marks a paradigm shift—not just in technology but in how leaders must think, operate, and compete. Its ability to generate original content and drive autonomous decision-making creates new imperatives for leadership.
         </p>
         <p class="intro-paragraph">
-        This guide equips you to navigate this shift. It’s a strategic briefing for those who don’t just want to adopt AI—but lead with it.
+        This guide equips you to navigate this shift. It's a strategic briefing for those who don't just want to adopt AI—but lead with it.
         </p>
 
         <hr class="module-divider">
 
         <h3 class="module-icon-title"><span class="icon">🔍</span>MODULE 1: What is Generative AI?</h3>
         <p class="module-body-text">
-        Generative AI doesn’t just automate—it creates. Whether it’s generating written content, visual art, code, or even music, GenAI systems simulate creativity using advanced neural networks.
+        Generative AI doesn't just automate—it creates. Whether it's generating written content, visual art, code, or even music, GenAI systems simulate creativity using advanced neural networks.
         </p>
         <p class="module-body-text">At its core:</p>
         <ul>
@@ -212,7 +314,7 @@
             <li>It is redefining value creation in knowledge work.</li>
         </ul>
         <div class="design-note">
-            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Insert symbolic image of a neural network forming creative digital shapes or code blocks “growing” like a tree.</span></p>
+            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Insert symbolic image of a neural network forming creative digital shapes or code blocks "growing" like a tree.</span></p>
         </div>
 
         <hr class="module-divider">
@@ -229,7 +331,7 @@
             <li>RLHF (Reinforcement Learning with Human Feedback) ensures alignment with human values.</li>
         </ul>
         <div class="design-note">
-            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Symbolic visual of two networks “competing” or a transformer architecture turning data into art.</span></p>
+            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Symbolic visual of two networks "competing" or a transformer architecture turning data into art.</span></p>
         </div>
 
         <hr class="module-divider">
@@ -283,7 +385,7 @@
             <li>Build infrastructure, train internal AI champions, and launch low-risk pilot projects.</li>
         </ul>
         <div class="design-note">
-            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Corporate AI roadmap graphic with nodes like “Strategy,” “Pilot,” “Scale.”</span></p>
+            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Corporate AI roadmap graphic with nodes like "Strategy," "Pilot," "Scale."</span></p>
         </div>
 
         <hr class="module-divider">
@@ -295,10 +397,10 @@
         <p class="module-body-text">Proven frameworks:</p>
         <ul>
             <li>ADKAR: Awareness, Desire, Knowledge, Ability, Reinforcement.</li>
-            <li>Kotter’s 8 Steps: Mobilize change, empower teams, reinforce wins.</li>
+            <li>Kotter's 8 Steps: Mobilize change, empower teams, reinforce wins.</li>
         </ul>
         <p class="module-body-text">
-        Culture-building is not optional—it’s the foundation of sustained AI transformation.
+        Culture-building is not optional—it's the foundation of sustained AI transformation.
         </p>
         <div class="design-note">
             <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Symbolic ladder or cycle of transformation steps, human silhouettes ascending.</span></p>
@@ -327,7 +429,7 @@
 
         <h3 class="module-icon-title"><span class="icon">🔮</span>MODULE 7: The Future of Work</h3>
         <p class="module-body-text">
-        Work won’t disappear—it will evolve.
+        Work won't disappear—it will evolve.
         </p>
         <p class="module-body-text">Expect:</p>
         <ul>
@@ -364,9 +466,24 @@
             <li>Case studies & vendor selection guides?</li>
         </ul>
         <p class="cta-action-statement">
-        <span class="icon">📩</span>Just say “Send me the full version” and we’ll prepare it for you.
+        <span class="icon">📩</span>Just say "Send me the full version" and we'll prepare it for you.
         </p>
 
     </div>
+
+    <script>
+        // Mobile menu toggle functionality
+        const hamburger = document.querySelector('.hamburger');
+        const navMenu = document.querySelector('.nav-menu');
+
+        hamburger.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+        });
+
+        // Close menu when clicking on a link
+        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
+            navMenu.classList.remove('active');
+        }));
+    </script>
 </body>
 </html>
