@@ -3,8 +3,105 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Chatbot Widget</title>
+    <title>AI Resources Hub</title>
     <style>
+        /* Chatbot Cards Section */
+        .cards-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 40px 20px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+            width: 320px;
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+        
+        .card-header {
+            padding: 20px;
+            background: #4285f4;
+            color: white;
+        }
+        
+        .card-title {
+            font-size: 20px;
+            font-weight: 600;
+            margin: 0 0 10px 0;
+        }
+        
+        .card-description {
+            font-size: 14px;
+            opacity: 0.9;
+            margin: 0;
+        }
+        
+        .card-body {
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card-features {
+            list-style-type: none;
+            padding: 0;
+            margin: 0 0 20px 0;
+        }
+        
+        .card-features li {
+            padding: 5px 0;
+            display: flex;
+            align-items: center;
+        }
+        
+        .card-features li:before {
+            content: "✓";
+            color: #4285f4;
+            font-weight: bold;
+            margin-right: 10px;
+        }
+        
+        .card-button {
+            display: block;
+            text-align: center;
+            background: #4285f4;
+            color: white;
+            padding: 12px 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 600;
+            margin-top: auto;
+            transition: background 0.3s ease;
+        }
+        
+        .card-button:hover {
+            background: #3367d6;
+        }
+        
+        .card-notebook {
+            border-top: 4px solid #34a853;
+        }
+        
+        .card-leadership {
+            border-top: 4px solid #ea4335;
+        }
+        
+        /* Existing Chatbot Styles */
         .chatbot-container {
             position: fixed;
             bottom: 20px;
@@ -122,9 +219,71 @@
         .hidden {
             display: none;
         }
+        
+        /* Page Header */
+        .page-header {
+            text-align: center;
+            padding: 40px 20px;
+            background: linear-gradient(135deg, #4285f4, #34a853);
+            color: white;
+            margin-bottom: 20px;
+        }
+        
+        .page-title {
+            font-size: 36px;
+            margin: 0 0 10px 0;
+        }
+        
+        .page-subtitle {
+            font-size: 18px;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
     </style>
 </head>
 <body>
+    <!-- Page Header -->
+    <div class="page-header">
+        <h1 class="page-title">AI Resources Hub</h1>
+        <p class="page-subtitle">Explore our collection of AI-powered tools and resources to enhance your learning and productivity</p>
+    </div>
+    
+    <!-- Chatbot Cards Section -->
+    <div class="cards-container">
+        <div class="card card-leadership">
+            <div class="card-header">
+                <h2 class="card-title">AI-Powered Leadership</h2>
+                <p class="card-description">Official course based on the author book</p>
+            </div>
+            <div class="card-body">
+                <ul class="card-features">
+                    <li>Leadership strategies enhanced by AI</li>
+                    <li>Official author content</li>
+                    <li>Practical implementation guides</li>
+                    <li>Interactive learning modules</li>
+                </ul>
+                <a href="https://chatgpt.com/g/g-p-690c43a5062881919bed049416c16517-ai-powered-leadership/project" class="card-button" target="_blank">Access Course</a>
+            </div>
+        </div>
+        
+        <div class="card card-notebook">
+            <div class="card-header">
+                <h2 class="card-title">NotebookLM</h2>
+                <p class="card-description">AI-powered research assistant</p>
+            </div>
+            <div class="card-body">
+                <ul class="card-features">
+                    <li>Interactive document analysis</li>
+                    <li>AI-powered insights</li>
+                    <li>Research assistance</li>
+                    <li>Knowledge organization</li>
+                </ul>
+                <a href="https://notebooklm.google.com/notebook/4353c083-1b86-46f6-83e5-8205d599ff2e" class="card-button" target="_blank">Open Notebook</a>
+            </div>
+        </div>
+    </div>
+
     <!-- Chatbot Toggle Button -->
     <div class="chatbot-toggle" id="chatbotToggle">
         💬
@@ -139,6 +298,9 @@
         <div class="chatbot-messages" id="chatbotMessages">
             <div class="message bot-message">
                 Hello! I'm your AI assistant. How can I help you today?
+            </div>
+            <div class="message bot-message">
+                You can ask me about the AI resources available on this page or anything else you'd like to know.
             </div>
         </div>
         <div class="chatbot-input">
@@ -176,9 +338,19 @@
             addMessage(message, 'user');
             userInput.value = '';
 
-            // Simulate bot response (replace with actual API call)
+            // Generate bot response
             setTimeout(() => {
-                addMessage("I am a demonstration chatbot. Iam connected to the AI-powered leadership course, which is an official author book.", 'bot');
+                let response = "I am a demonstration chatbot. I can help you learn more about the AI resources available on this page.";
+                
+                if (message.toLowerCase().includes('leadership') || message.toLowerCase().includes('course')) {
+                    response = "The AI-Powered Leadership course is based on the official author book. It provides leadership strategies enhanced by AI. You can access it by clicking the 'Access Course' card above.";
+                } else if (message.toLowerCase().includes('notebook') || message.toLowerCase().includes('research')) {
+                    response = "NotebookLM is an AI-powered research assistant that helps with document analysis and knowledge organization. You can open it by clicking the 'Open Notebook' card above.";
+                } else if (message.toLowerCase().includes('help') || message.toLowerCase().includes('what')) {
+                    response = "This page offers two main AI resources: 1) AI-Powered Leadership course, and 2) NotebookLM research assistant. You can click on the cards to access these resources or ask me specific questions about them.";
+                }
+                
+                addMessage(response, 'bot');
             }, 1000);
         }
 
@@ -198,24 +370,6 @@
                 sendMessage();
             }
         });
-
-        // Example of how you would integrate with an API (when available)
-        async function sendToNotebookLM(message) {
-            // This is a placeholder for when NotebookLM provides an API
-            /*
-            const response = await fetch('https://notebooklm.google.com/notebook/4353c083-1b86-46f6-83e5-8205d599ff2e', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json',
-                },
-                body: JSON.stringify({
-                    message: message,
-                    notebookId: 'your-notebook-id'
-                })
-            });
-            return await response.json();
-            */
-        }
     </script>
 </body>
 </html>
