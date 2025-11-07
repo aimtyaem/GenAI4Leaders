@@ -34,7 +34,6 @@
         
         .card-header {
             padding: 20px;
-            background: #4285f4;
             color: white;
         }
         
@@ -79,28 +78,67 @@
         .card-button {
             display: block;
             text-align: center;
-            background: #4285f4;
             color: white;
             padding: 12px 20px;
             border-radius: 8px;
             text-decoration: none;
             font-weight: 600;
             margin-top: auto;
-            transition: background 0.3s ease;
+            transition: background 0.3s ease, transform 0.2s ease;
         }
         
         .card-button:hover {
-            background: #3367d6;
+            transform: translateY(-2px);
         }
         
         .card-notebook {
             border-top: 4px solid #34a853;
         }
         
+        .card-notebook .card-header {
+            background: #34a853;
+        }
+        
+        .card-notebook .card-button {
+            background: #34a853;
+        }
+        
+        .card-notebook .card-button:hover {
+            background: #2d8c47;
+        }
+        
         .card-leadership {
             border-top: 4px solid #ea4335;
         }
         
+        .card-leadership .card-header {
+            background: #ea4335;
+        }
+        
+        .card-leadership .card-button {
+            background: #ea4335;
+        }
+        
+        .card-leadership .card-button:hover {
+            background: #d33426;
+        }
+        
+        .card-perplexity {
+            border-top: 4px solid #8b5cf6;
+        }
+        
+        .card-perplexity .card-header {
+            background: #8b5cf6;
+        }
+        
+        .card-perplexity .card-button {
+            background: #8b5cf6;
+        }
+        
+        .card-perplexity .card-button:hover {
+            background: #7c4dff;
+        }
+
         /* Existing Chatbot Styles */
         .chatbot-container {
             position: fixed;
@@ -224,7 +262,7 @@
         .page-header {
             text-align: center;
             padding: 40px 20px;
-            background: linear-gradient(135deg, #4285f4, #34a853);
+            background: linear-gradient(135deg, #4285f4, #8b5cf6);
             color: white;
             margin-bottom: 20px;
         }
@@ -240,6 +278,12 @@
             max-width: 600px;
             margin: 0 auto;
         }
+        
+        /* Card Icon Styling */
+        .card-icon {
+            font-size: 24px;
+            margin-bottom: 10px;
+        }
     </style>
 </head>
 <body>
@@ -253,6 +297,7 @@
     <div class="cards-container">
         <div class="card card-leadership">
             <div class="card-header">
+                <div class="card-icon">🚀</div>
                 <h2 class="card-title">AI-Powered Leadership</h2>
                 <p class="card-description">Official course based on the author book</p>
             </div>
@@ -269,6 +314,7 @@
         
         <div class="card card-notebook">
             <div class="card-header">
+                <div class="card-icon">📓</div>
                 <h2 class="card-title">NotebookLM</h2>
                 <p class="card-description">AI-powered research assistant</p>
             </div>
@@ -280,6 +326,23 @@
                     <li>Knowledge organization</li>
                 </ul>
                 <a href="https://notebooklm.google.com/notebook/4353c083-1b86-46f6-83e5-8205d599ff2e" class="card-button" target="_blank">Open Notebook</a>
+            </div>
+        </div>
+        
+        <div class="card card-perplexity">
+            <div class="card-header">
+                <div class="card-icon">🤖</div>
+                <h2 class="card-title">Perplexity AI</h2>
+                <p class="card-description">AI-powered leadership chatbot</p>
+            </div>
+            <div class="card-body">
+                <ul class="card-features">
+                    <li>Conversational AI for leadership</li>
+                    <li>Answer-focused responses</li>
+                    <li>Collection of leadership resources</li>
+                    <li>Real-time information access</li>
+                </ul>
+                <a href="https://www.perplexity.ai/collections/ai-powered-leadership-chatbot-fx2mdRoCRZyMqX1wgvcSAQ" class="card-button" target="_blank">Try Chatbot</a>
             </div>
         </div>
     </div>
@@ -346,8 +409,10 @@
                     response = "The AI-Powered Leadership course is based on the official author book. It provides leadership strategies enhanced by AI. You can access it by clicking the 'Access Course' card above.";
                 } else if (message.toLowerCase().includes('notebook') || message.toLowerCase().includes('research')) {
                     response = "NotebookLM is an AI-powered research assistant that helps with document analysis and knowledge organization. You can open it by clicking the 'Open Notebook' card above.";
+                } else if (message.toLowerCase().includes('perplexity') || message.toLowerCase().includes('chatbot')) {
+                    response = "Perplexity AI offers a specialized chatbot for leadership topics with answer-focused responses and access to a collection of leadership resources. You can try it by clicking the 'Try Chatbot' card above.";
                 } else if (message.toLowerCase().includes('help') || message.toLowerCase().includes('what')) {
-                    response = "This page offers two main AI resources: 1) AI-Powered Leadership course, and 2) NotebookLM research assistant. You can click on the cards to access these resources or ask me specific questions about them.";
+                    response = "This page offers three main AI resources: 1) AI-Powered Leadership course, 2) NotebookLM research assistant, and 3) Perplexity AI leadership chatbot. You can click on the cards to access these resources or ask me specific questions about them.";
                 }
                 
                 addMessage(response, 'bot');
