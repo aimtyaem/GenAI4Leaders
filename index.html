@@ -1,489 +1,161 @@
 <!DOCTYPE html>
-<html lang="en">
+<html class="dark" lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Generative AI for Leaders and Managers - Preview Edition</title>
-    <link href="https://fonts.googleapis.com/css2?family=Merriweather:ital,wght@0,400;0,700;1,400&family=Montserrat:wght@400;600;700&family=Open+Sans:ital,wght@0,400;0,700;1,400&display=swap" rel="stylesheet">
+    <meta charset="utf-8"/>
+    <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+    <title>Generative AI Course Platform</title>
+    <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+    <link href="https://fonts.googleapis.com" rel="preconnect"/>
+    <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+    <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;700&amp;display=swap" rel="stylesheet"/>
+    <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined" rel="stylesheet"/>
+    <script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#3713ec",
+                        "background-light": "#f6f6f8",
+                        "background-dark": "#131022",
+                    },
+                    fontFamily: {
+                        "display": ["Space Grotesk", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
     <style>
-        body {
-            font-family: 'Merriweather', serif;
-            color: #333333; /* Primary Text Color */
-            line-height: 1.6; /* Line Height */
-            margin: 0;
-            padding: 0;
-            background-color: #fdfdfd;
+        .material-symbols-outlined {
+            font-variation-settings:
+                'FILL' 0,
+                'wght' 400,
+                'GRAD' 0,
+                'opsz' 24
         }
-        .container {
-            max-width: 800px;
-            margin: 20px auto;
-            padding: 20px;
-            background-color: #ffffff;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        .nav-active {
+            color: #3713ec;
+            font-weight: bold;
         }
-        h1, h2, h3, h4, h5, h6 {
-            font-family: 'Montserrat', sans-serif;
-            color: #003366; /* Heading Color */
-            margin-top: 1.5em;
-            margin-bottom: 0.5em;
-        }
-        p {
-            margin-bottom: 1.2em; /* Paragraph Spacing */
-        }
-        ul {
-            margin-bottom: 1.2em;
-            padding-left: 25px;
-        }
-        li {
-            margin-bottom: 0.5em;
-        }
-        .center-text {
-            text-align: center;
-        }
-        .title-page-icon {
-            font-size: 48pt; /* Prominent icon */
-            text-align: center;
-            margin-bottom: 0.5em;
-        }
-        .book-title {
-            font-weight: 700; /* Bold */
-            font-size: 36pt;
-            text-align: center;
-            color: #003366;
-            margin-bottom: 0.2em;
-        }
-        .book-subtitle {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 400; /* Regular */
-            font-size: 18pt;
-            text-align: center;
-            color: #333333;
-            margin-bottom: 2em;
-        }
-        .section-divider-icon {
-            font-size: 30pt; /* Prominent icon */
-            text-align: left;
-            margin-bottom: 0.3em;
-        }
-        .section-heading {
-            font-weight: 600; /* Semi-Bold */
-            font-size: 20pt;
-            color: #003366;
-            text-transform: uppercase;
-            margin-bottom: 0.8em;
-        }
-        .intro-paragraph {
-            font-family: 'Merriweather', serif;
-            font-size: 11pt;
-            color: #333333;
-        }
-        .module-icon-title {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600; /* Semi-Bold */
-            font-size: 18pt;
-            color: #003366;
-            margin-bottom: 0.8em;
-        }
-        .module-icon-title .icon {
-            color: #6699CC; /* Accent Color for icon part */
-            margin-right: 0.3em;
-        }
-        .module-body-text {
-            font-family: 'Merriweather', serif;
-            font-size: 11pt;
-            color: #333333;
-        }
-        .design-note {
-            border-left: 4px solid #6699CC; /* Accent Color border */
-            padding-left: 15px;
-            margin: 1.5em 0;
-            background-color: #f9f9f9;
-        }
-        .design-note .icon {
-            font-size: 14pt;
-            color: #6699CC; /* Accent Color */
-            margin-right: 5px;
-        }
-        .design-note-label {
-            font-family: 'Open Sans', sans-serif;
-            font-weight: 700; /* Bold */
-            font-size: 10pt;
-            color: #6699CC; /* Accent Color */
-        }
-        .design-note-text {
-            font-family: 'Open Sans', sans-serif; /* Can also be Merriweather */
-            font-style: italic;
-            font-size: 10pt;
-            color: #333333; /* Primary Text Color */
-        }
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-bottom: 1.2em;
-            font-size: 10pt;
-        }
-        th, td {
-            border: 1px solid #CCCCCC; /* Subtle, thin lines */
-            padding: 10px;
-            text-align: left;
-            font-family: 'Merriweather', serif;
-            color: #333333;
-        }
-        th {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500; /* Medium (using 500 for medium, often a good match) */
-            font-size: 11pt;
-            background-color: #E6F0FA; /* Light accent color fill */
-            color: #003366; /* Heading Color */
-        }
-        .who-should-read-list {
-            list-style-type: none;
-            padding-left: 0;
-        }
-        .who-should-read-list li {
-            font-family: 'Merriweather', serif;
-            font-size: 11pt;
-        }
-        .who-should-read-list strong {
-            font-weight: 700; /* Bold */
-        }
-        .cta-heading {
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600; /* Semi-Bold */
-            font-size: 18pt;
-            color: #28a745; /* CTA Color */
-            margin-bottom: 0.8em;
-        }
-        .cta-heading .icon {
-            margin-right: 0.3em;
-        }
-        .cta-text {
-            font-family: 'Merriweather', serif;
-            font-size: 11pt;
-            color: #333333;
-        }
-        .cta-action-statement {
-            font-family: 'Montserrat', sans-serif; /* Or Merriweather Bold */
-            font-weight: 700; /* Bold or Semi-Bold */
-            font-size: 13pt;
-            color: #28a745; /* CTA Color */
-            text-align: center;
-            margin-top: 1em;
-        }
-        .cta-action-statement .icon {
-             margin-right: 0.3em;
-        }
-        hr.module-divider {
-            border: 0;
-            height: 1px;
-            background-color: #e0e0e0;
-            margin: 2.5em 0;
-        }
-
-        /* New Navigation Styles */
-        .navbar {
-            background-color: #003366;
-            padding: 15px 0;
-            margin-bottom: 20px;
-            border-radius: 5px;
-        }
-        .nav-container {
-            max-width: 800px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-            padding: 0 20px;
-        }
-        .nav-logo {
+        .nav-active.dark {
             color: white;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 700;
-            font-size: 18px;
-            text-decoration: none;
-        }
-        .nav-menu {
-            display: flex;
-            list-style: none;
-            margin: 0;
-            padding: 0;
-        }
-        .nav-item {
-            margin-left: 20px;
-        }
-        .nav-link {
-            color: white;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 600;
-            text-decoration: none;
-            padding: 8px 15px;
-            border-radius: 4px;
-            transition: background-color 0.3s;
-        }
-        .nav-link:hover {
-            background-color: rgba(255, 255, 255, 0.1);
-        }
-        .nav-link.chatbot {
-            background-color: #28a745;
-        }
-        .nav-link.chatbot:hover {
-            background-color: #218838;
-        }
-        .hamburger {
-            display: none;
-            cursor: pointer;
-            color: white;
-            font-size: 24px;
-        }
-
-        /* Mobile Responsive Styles */
-        @media screen and (max-width: 768px) {
-            .nav-menu {
-                position: fixed;
-                left: -100%;
-                top: 70px;
-                flex-direction: column;
-                background-color: #003366;
-                width: 100%;
-                text-align: center;
-                transition: 0.3s;
-                box-shadow: 0 10px 27px rgba(0, 0, 0, 0.05);
-                z-index: 1000;
-            }
-            .nav-menu.active {
-                left: 0;
-            }
-            .nav-item {
-                margin: 15px 0;
-            }
-            .hamburger {
-                display: block;
-            }
         }
     </style>
 </head>
-<body>
-    <!-- Navigation Menu -->
-    <nav class="navbar">
-        <div class="nav-container">
-            <a href="index.html" class="nav-logo">AI Leadership</a>
-            <ul class="nav-menu">
-                <li class="nav-item">
-                    <a href="index.html" class="nav-link">Home</a>
-                </li>
-                <li class="nav-item">
-                    <a href="chatbot.html" class="nav-link">AI Resources Hub</a>
-                </li>
-                <li class="nav-item">
-                    <a href="https://notebooklm.google.com/notebook/4353c083-1b86-46f6-83e5-8205d599ff2e" 
-                       class="nav-link chatbot" target="_blank">AI Leadership Chatbot</a>
-                </li>
-            </ul>
-            <div class="hamburger">
-                ☰
+<body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
+    <div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+        <div class="layout-container flex h-full grow flex-col">
+            <div class="flex flex-1 justify-center py-5 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-40">
+                <div class="layout-content-container flex flex-col w-full max-w-6xl flex-1">
+                    <!-- Updated Header with Navigation Menu -->
+                    <header class="flex flex-col sm:flex-row items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-4 sm:px-6 py-4 gap-4">
+                        <div class="flex items-center gap-4 text-white">
+                            <div class="size-6 text-white/80">
+                                <svg fill="none" viewbox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+                                    <path clip-rule="evenodd" d="M24 18.4228L42 11.475V34.3663C42 34.7796 41.7457 35.1504 41.3601 35.2992L24 42V18.4228Z" fill="currentColor" fill-rule="evenodd"></path>
+                                    <path clip-rule="evenodd" d="M24 8.18819L33.4123 11.574L24 15.2071L14.5877 11.574L24 8.18819ZM9 15.8487L21 20.4805V37.6263L9 32.9945V15.8487ZM27 37.6263V20.4805L39 15.8487V32.9945L27 37.6263ZM25.354 2.29885C24.4788 1.98402 23.5212 1.98402 22.646 2.29885L4.98454 8.65208C3.7939 9.08038 3 10.2097 3 11.475V34.3663C3 36.0196 4.01719 37.5026 5.55962 38.098L22.9197 44.7987C23.6149 45.0671 24.3851 45.0671 25.0803 44.7987L42.4404 38.098C43.9828 37.5026 45 36.0196 45 34.3663V11.475C45 10.2097 44.2061 9.08038 43.0155 8.65208L25.354 2.29885Z" fill="currentColor" fill-rule="evenodd"></path>
+                                </svg>
+                            </div>
+                            <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Generative AI Course</h2>
+                        </div>
+                        
+                        <!-- Navigation Menu -->
+                        <nav class="flex items-center gap-6 bg-white/10 dark:bg-white/5 rounded-lg px-4 py-2 backdrop-blur-sm">
+                            <a class="nav-active text-white text-sm font-bold leading-normal transition-colors flex items-center gap-1" href="index.html">
+                                <span class="material-symbols-outlined text-base">home</span>
+                                Course Home
+                            </a>
+                            <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors flex items-center gap-1" href="community.html">
+                                <span class="material-symbols-outlined text-base">forum</span>
+                                Community
+                            </a>
+                            <a class="text-white/80 hover:text-white text-sm font-medium leading-normal transition-colors flex items-center gap-1" href="chatbot.html">
+                                <span class="material-symbols-outlined text-base">smart_toy</span>
+                                AI Assistant
+                            </a>
+                        </nav>
+
+                        <button class="flex max-w-[480px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 w-10 bg-white/10 text-white gap-2 text-sm font-bold leading-normal tracking-[0.015em] min-w-0">
+                            <span class="material-symbols-outlined text-white/80">arrow_back</span>
+                        </button>
+                    </header>
+
+                    <main class="flex-grow flex items-center justify-center w-full py-8 sm:py-12">
+                        <div class="grid grid-cols-1 lg:grid-cols-2 gap-8 md:gap-12 w-full">
+                            <div class="flex items-center justify-center">
+                                <div class="w-full max-w-sm lg:max-w-md aspect-[2/3] overflow-hidden rounded-xl shadow-2xl shadow-black/40">
+                                    <div class="w-full h-full bg-center bg-no-repeat bg-cover bg-gradient-to-br from-purple-900 to-blue-800 flex items-center justify-center p-8">
+                                        <div class="text-white text-center">
+                                            <h1 class="text-2xl font-bold mb-4">Generative AI</h1>
+                                            <p class="text-lg">Concepts, Applications, and Strategic Implementation</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="flex flex-col justify-center items-center lg:items-start gap-8 px-4">
+                                <div class="flex items-end gap-3 w-full max-w-md">
+                                    <div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full w-12 h-12 shrink-0 border-2 border-primary/50 bg-gradient-to-br from-blue-500 to-purple-600" data-alt="AI Instructor avatar"></div>
+                                    <div class="flex flex-1 flex-col gap-2 items-start">
+                                        <p class="text-gray-400 dark:text-gray-500 text-sm font-medium">Course Instructor</p>
+                                        <p class="text-base font-normal leading-relaxed flex max-w-[360px] rounded-xl rounded-bl-none px-4 py-3 bg-white/5 dark:bg-white/10 text-gray-300 dark:text-gray-400 border border-white/10">
+                                            Welcome to the Generative AI course! This comprehensive program explores fundamental principles, applications across industries, strategic implementation, and ethical implications. How would you like to begin your learning journey?
+                                        </p>
+                                    </div>
+                                </div>
+                                <div class="flex w-full max-w-md flex-col items-stretch gap-3 py-3">
+                                    <button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] w-full transition-transform hover:scale-105">
+                                        <span class="truncate">Start Learning</span>
+                                    </button>
+                                    <button class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-white/10 text-white text-base font-bold leading-normal tracking-[0.015em] w-full transition-transform hover:scale-105">
+                                        <span class="truncate">Explore Course Modules</span>
+                                    </button>
+                                </div>
+                                <div class="w-full max-w-md">
+                                    <h3 class="text-lg font-bold mb-4">Course Modules</h3>
+                                    <ul class="space-y-2 text-sm">
+                                        <li class="flex items-start">
+                                            <span class="material-symbols-outlined text-primary mr-2 mt-0.5">check_circle</span>
+                                            <span>Introduction to Generative AI</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="material-symbols-outlined text-primary mr-2 mt-0.5">check_circle</span>
+                                            <span>Core Concepts and How Generative AI Works</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="material-symbols-outlined text-primary mr-2 mt-0.5">check_circle</span>
+                                            <span>Applications Across Industries</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="material-symbols-outlined text-primary mr-2 mt-0.5">check_circle</span>
+                                            <span>Strategic Planning for AI Adoption</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="material-symbols-outlined text-primary mr-2 mt-0.5">check_circle</span>
+                                            <span>Implementing AI in Organizations</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="material-symbols-outlined text-primary mr-2 mt-0.5">check_circle</span>
+                                            <span>Ethical Considerations and Governance</span>
+                                        </li>
+                                        <li class="flex items-start">
+                                            <span class="material-symbols-outlined text-primary mr-2 mt-0.5">check_circle</span>
+                                            <span>The Future of Generative AI</span>
+                                        </li>
+                                    </ul>
+                                </div>
+                            </div>
+                        </div>
+                    </main>
+                </div>
             </div>
         </div>
-    </nav>
-
-    <div class="container">
-        <div class="title-page-icon">📘</div>
-        <h1 class="book-title">Generative AI for Leaders and Managers</h1>
-        <p class="book-subtitle">Preview Edition: Understand, Strategize, Implement</p>
-
-        <hr class="module-divider">
-
-        <div class="section-divider-icon">🧠</div>
-        <h2 class="section-heading">INTRODUCTION</h2>
-        <p class="intro-paragraph">
-        Generative AI marks a paradigm shift—not just in technology but in how leaders must think, operate, and compete. Its ability to generate original content and drive autonomous decision-making creates new imperatives for leadership.
-        </p>
-        <p class="intro-paragraph">
-        This guide equips you to navigate this shift. It's a strategic briefing for those who don't just want to adopt AI—but lead with it.
-        </p>
-
-        <hr class="module-divider">
-
-        <h3 class="module-icon-title"><span class="icon">🔍</span>MODULE 1: What is Generative AI?</h3>
-        <p class="module-body-text">
-        Generative AI doesn't just automate—it creates. Whether it's generating written content, visual art, code, or even music, GenAI systems simulate creativity using advanced neural networks.
-        </p>
-        <p class="module-body-text">At its core:</p>
-        <ul>
-            <li>GenAI leverages deep learning models like GPT (text), GANs (images), and diffusion models.</li>
-            <li>It enables content generation at scale, 24/7, without burnout or bias (when properly designed).</li>
-            <li>It is redefining value creation in knowledge work.</li>
-        </ul>
-        <div class="design-note">
-            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Insert symbolic image of a neural network forming creative digital shapes or code blocks "growing" like a tree.</span></p>
-        </div>
-
-        <hr class="module-divider">
-
-        <h3 class="module-icon-title"><span class="icon">⚙️</span>MODULE 2: How It Works</h3>
-        <p class="module-body-text">
-        Generative AI is built on transformers, encoder-decoder architectures, and reinforcement learning.
-        </p>
-        <p class="module-body-text">Core concepts:</p>
-        <ul>
-            <li>Transformers enable the model to learn language, logic, and structure.</li>
-            <li>GANs (Generative Adversarial Networks) pit two networks against each other—one generates, the other critiques.</li>
-            <li>Diffusion models refine noisy data into clear outputs.</li>
-            <li>RLHF (Reinforcement Learning with Human Feedback) ensures alignment with human values.</li>
-        </ul>
-        <div class="design-note">
-            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Symbolic visual of two networks "competing" or a transformer architecture turning data into art.</span></p>
-        </div>
-
-        <hr class="module-divider">
-
-        <h3 class="module-icon-title"><span class="icon">🏭</span>MODULE 3: Industry Applications</h3>
-        <table>
-            <thead>
-                <tr>
-                    <th>Industry</th>
-                    <th>AI Use Cases</th>
-                    <th>Strategic Wins</th>
-                </tr>
-            </thead>
-            <tbody>
-                <tr>
-                    <td>Finance</td>
-                    <td>Risk modeling, report gen.</td>
-                    <td>Faster decisions, fewer errors</td>
-                </tr>
-                <tr>
-                    <td>Healthcare</td>
-                    <td>Drug discovery, diagnostics</td>
-                    <td>Faster R&D, better outcomes</td>
-                </tr>
-                <tr>
-                    <td>Marketing</td>
-                    <td>Ad copy, SEO, chatbots</td>
-                    <td>Higher engagement/conversions</td>
-                </tr>
-                <tr>
-                    <td>Operations</td>
-                    <td>Process optimization</td>
-                    <td>Reduced costs, improved scale</td>
-                </tr>
-            </tbody>
-        </table>
-        <div class="design-note">
-            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Abstract icon montage (finance, health, marketing) infused with tech overlays.</span></p>
-        </div>
-
-        <hr class="module-divider">
-
-        <h3 class="module-icon-title"><span class="icon">🧭</span>MODULE 4: Strategy & Implementation</h3>
-        <p class="module-body-text">
-        Generative AI requires deliberate integration, not experimentation alone.
-        </p>
-        <p class="module-body-text">Strategic steps:</p>
-        <ul>
-            <li>Use frameworks like Azure AI Maturity Model or B EYE to assess readiness.</li>
-            <li>Align GenAI initiatives with KPIs.</li>
-            <li>Build infrastructure, train internal AI champions, and launch low-risk pilot projects.</li>
-        </ul>
-        <div class="design-note">
-            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Corporate AI roadmap graphic with nodes like "Strategy," "Pilot," "Scale."</span></p>
-        </div>
-
-        <hr class="module-divider">
-
-        <h3 class="module-icon-title"><span class="icon">🔁</span>MODULE 5: Change Management</h3>
-        <p class="module-body-text">
-        Transformation succeeds only if your people move with it.
-        </p>
-        <p class="module-body-text">Proven frameworks:</p>
-        <ul>
-            <li>ADKAR: Awareness, Desire, Knowledge, Ability, Reinforcement.</li>
-            <li>Kotter's 8 Steps: Mobilize change, empower teams, reinforce wins.</li>
-        </ul>
-        <p class="module-body-text">
-        Culture-building is not optional—it's the foundation of sustained AI transformation.
-        </p>
-        <div class="design-note">
-            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Symbolic ladder or cycle of transformation steps, human silhouettes ascending.</span></p>
-        </div>
-
-        <hr class="module-divider">
-
-        <h3 class="module-icon-title"><span class="icon">⚖️</span>MODULE 6: Ethics and Governance</h3>
-        <p class="module-body-text">
-        Without trust, AI fails.
-        </p>
-        <p class="module-body-text">As GenAI scales, leaders must enforce:</p>
-        <ul>
-            <li>Bias mitigation</li>
-            <li>Data privacy</li>
-            <li>Transparent governance</li>
-        </ul>
-        <p class="module-body-text">
-        Establish an AI Ethics Board. Train your workforce in responsible AI practices.
-        </p>
-        <div class="design-note">
-            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Blindfolded AI statue holding balance scales over a glowing neural web.</span></p>
-        </div>
-
-        <hr class="module-divider">
-
-        <h3 class="module-icon-title"><span class="icon">🔮</span>MODULE 7: The Future of Work</h3>
-        <p class="module-body-text">
-        Work won't disappear—it will evolve.
-        </p>
-        <p class="module-body-text">Expect:</p>
-        <ul>
-            <li>Agentic AI systems that initiate, not just respond.</li>
-            <li>Multimodal tools that understand text, image, voice, and behavior.</li>
-            <li>Teams shifting from task-doers to AI-augmented thinkers.</li>
-        </ul>
-        <p class="module-body-text">
-        Your competitive edge? How fast you adapt.
-        </p>
-        <div class="design-note">
-            <p><span class="icon">🎨</span> <span class="design-note-label">Design Note:</span> <span class="design-note-text">Symbolic human+AI figure merging or collaborating, abstract digital assistant motif.</span></p>
-        </div>
-
-        <hr class="module-divider">
-
-        <h3 class="module-icon-title"><span class="icon">👥</span>WHO SHOULD READ THIS?</h3>
-        <ul class="who-should-read-list">
-            <li><strong>C-Level Execs:</strong> Make strategic decisions rooted in AI awareness.</li>
-            <li><strong>Ops Leaders:</strong> Optimize and automate responsibly.</li>
-            <li><strong>HR & L&D:</strong> Build AI literacy and adaptive cultures.</li>
-            <li><strong>Innovation Heads:</strong> Lead pilots, test models, scale impact.</li>
-        </ul>
-
-        <hr class="module-divider">
-
-        <h3 class="cta-heading"><span class="icon">✅</span>CALL TO ACTION</h3>
-        <p class="cta-text">
-        Want the full version with:
-        </p>
-        <ul>
-            <li>Templates</li>
-            <li>Implementation blueprints</li>
-            <li>Case studies & vendor selection guides?</li>
-        </ul>
-        <p class="cta-action-statement">
-        <span class="icon">📩</span>Just say "Send me the full version" and we'll prepare it for you.
-        </p>
-
     </div>
-
-    <script>
-        // Mobile menu toggle functionality
-        const hamburger = document.querySelector('.hamburger');
-        const navMenu = document.querySelector('.nav-menu');
-
-        hamburger.addEventListener('click', () => {
-            navMenu.classList.toggle('active');
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-link').forEach(n => n.addEventListener('click', () => {
-            navMenu.classList.remove('active');
-        }));
-    </script>
 </body>
 </html>
