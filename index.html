@@ -47,6 +47,13 @@
         .nav-active.dark {
             color: white;
         }
+        .media-card {
+            transition: all 0.3s ease;
+        }
+        .media-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
+        }
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
@@ -151,6 +158,63 @@
                                         </li>
                                     </ul>
                                 </div>
+
+                                <!-- New Media Section for Zoom and YouTube -->
+                                <div class="w-full max-w-md mt-8">
+                                    <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+                                        <span class="material-symbols-outlined text-primary">video_library</span>
+                                        Course Media & Live Sessions
+                                    </h3>
+                                    <div class="grid grid-cols-1 gap-6">
+                                        <!-- Zoom Channel Card -->
+                                        <div class="media-card bg-white/5 dark:bg-white/10 border border-white/10 rounded-xl p-6 flex flex-col items-center gap-4">
+                                            <div class="flex items-center gap-3 w-full">
+                                                <span class="material-symbols-outlined text-primary text-2xl">videocam</span>
+                                                <h4 class="text-lg font-bold text-white">Join Live Zoom Sessions</h4>
+                                            </div>
+                                            <p class="text-gray-300 dark:text-gray-400 text-sm text-center">
+                                                Scan the QR code below to join our live Zoom channel for interactive sessions and Q&A with instructors.
+                                            </p>
+                                            <div class="bg-white p-4 rounded-lg shadow-lg">
+                                                <img src="1000109780.jpg" alt="Zoom Channel QR Code" class="w-48 h-48 object-contain mx-auto">
+                                            </div>
+                                            <div class="flex gap-3 w-full">
+                                                <button class="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
+                                                    <span class="material-symbols-outlined text-sm">link</span>
+                                                    <span class="text-sm">Open Zoom</span>
+                                                </button>
+                                                <button class="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors">
+                                                    <span class="material-symbols-outlined text-sm">download</span>
+                                                    <span class="text-sm">Save QR Code</span>
+                                                </button>
+                                            </div>
+                                        </div>
+
+                                        <!-- YouTube Video Card -->
+                                        <div class="media-card bg-white/5 dark:bg-white/10 border border-white/10 rounded-xl p-6 flex flex-col items-center gap-4">
+                                            <div class="flex items-center gap-3 w-full">
+                                                <span class="material-symbols-outlined text-primary text-2xl">play_circle</span>
+                                                <h4 class="text-lg font-bold text-white">Course Overview Video</h4>
+                                            </div>
+                                            <p class="text-gray-300 dark:text-gray-400 text-sm text-center">
+                                                Watch our comprehensive course overview to understand what you'll learn and how to get the most from this program.
+                                            </p>
+                                            <div class="relative w-full aspect-video bg-black rounded-lg overflow-hidden">
+                                                <div class="absolute inset-0 flex items-center justify-center">
+                                                    <div class="text-center">
+                                                        <span class="material-symbols-outlined text-white text-6xl opacity-80">play_circle</span>
+                                                        <p class="text-white mt-2">Click to watch overview</p>
+                                                    </div>
+                                                </div>
+                                                <img src="https://img.youtube.com/vi/ba4L6bUj5Ak/maxresdefault.jpg" alt="YouTube Video Thumbnail" class="w-full h-full object-cover opacity-60">
+                                            </div>
+                                            <a href="https://youtu.be/ba4L6bUj5Ak?si=UhfJXZBjKHoFC7ZN" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 py-3 px-4 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors">
+                                                <span class="material-symbols-outlined text-sm">play_arrow</span>
+                                                <span class="font-medium">Watch on YouTube</span>
+                                            </a>
+                                        </div>
+                                    </div>
+                                </div>
                             </div>
                         </div>
                     </main>
@@ -158,5 +222,52 @@
             </div>
         </div>
     </div>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Add interactivity to the media cards
+            const mediaCards = document.querySelectorAll('.media-card');
+            
+            mediaCards.forEach(card => {
+                card.addEventListener('click', function(e) {
+                    if (e.target.closest('a') || e.target.closest('button')) {
+                        return; // Don't trigger if clicking on links or buttons
+                    }
+                    
+                    // For the YouTube card, open the video
+                    if (this.querySelector('a[href*="youtube.com"]')) {
+                        window.open('https://youtu.be/ba4L6bUj5Ak?si=UhfJXZBjKHoFC7ZN', '_blank');
+                    }
+                });
+            });
+
+            // Zoom button functionality
+            const zoomButtons = document.querySelectorAll('.bg-blue-600');
+            zoomButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    alert('Zoom link would open here. In a real implementation, this would launch the Zoom application or open the Zoom web client.');
+                });
+            });
+
+            // Download QR code functionality
+            const downloadButtons = document.querySelectorAll('.bg-gray-600');
+            downloadButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    alert('QR code download would initiate here. In a real implementation, this would download the QR code image.');
+                });
+            });
+
+            // YouTube thumbnail click
+            const youtubeThumbnail = document.querySelector('.relative.w-full.aspect-video');
+            if (youtubeThumbnail) {
+                youtubeThumbnail.style.cursor = 'pointer';
+                youtubeThumbnail.addEventListener('click', function() {
+                    window.open('https://www.youtube.com/embed/ba4L6bUj5Ak', '_blank');
+                });
+            }
+        });
+    </script>
 </body>
 </html>
