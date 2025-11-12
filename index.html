@@ -203,10 +203,75 @@
                                                     <span class="material-symbols-outlined text-sm">link</span>
                                                     <span class="text-sm">Open Zoom</span>
                                                 </a>
-                                                <button id="downloadQR" class="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors">
-                                                    <span class="material-symbols-outlined text-sm">download</span>
-                                                    <span class="text-sm">Save QR Code</span>
-                                                </button>
+                                                
+
+    <button id="downloadQR" class="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-gray-600 hover:bg-gray-700 text-white rounded-lg transition-colors">
+        <span class="material-symbols-outlined text-sm">download</span>
+        <span class="text-sm">Save QR Code</span>
+    </button>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // 1. Find the button on the page
+            const downloadButton = document.getElementById('downloadQR');
+            
+            // 2. Define the URL of the image you want to download
+            const imageUrl = 'https://raw.githubusercontent.com/aimtyaem/GenAI4Leaders/main/img/ad50d9c5-39ae-48df-b5fd-d6a2055dce7b.jpg';
+
+            // 3. Add a click event listener
+            downloadButton.addEventListener('click', async function() {
+                
+                // --- Good User Experience: Show a loading state ---
+                const buttonText = this.querySelector('span:last-child');
+                const originalText = buttonText.textContent;
+                this.disabled = true;
+                buttonText.textContent = 'Downloading...';
+                // --------------------------------------------------
+
+                try {
+                    // 4. Fetch the image from the URL
+                    const response = await fetch(imageUrl);
+                    
+                    // 5. Check if the download was successful
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    
+                    // 6. Get the image data as a 'blob' (a file-like object)
+                    const blob = await response.blob();
+                    
+                    // 7. Create a temporary, local URL for this blob
+                    const url = URL.createObjectURL(blob);
+                    
+                    // 8. Create a temporary, hidden 'a' (link) element
+                    const link = document.createElement('a');
+                    link.href = url;
+                    link.download = 'zoom-qr-code.jpg'; // This is the default filename
+                    
+                    // 9. Add the link to the page, click it, then remove it
+                    document.body.appendChild(link);
+                    link.click();
+                    document.body.removeChild(link);
+                    
+                    // 10. Clean up the temporary URL
+                    URL.revokeObjectURL(url);
+
+                    buttonText.textContent = 'Success!';
+
+                } catch (error) {
+                    console.error('Download failed:', error);
+                    buttonText.textContent = 'Download Failed';
+                } finally {
+                    // 11. Reset the button after 2 seconds
+                    setTimeout(() => {
+                        this.disabled = false;
+                        buttonText.textContent = originalText;
+                    }, 2000);
+                }
+            });
+        });
+    </script>
+
                                             </div>
                                         </div>
 
