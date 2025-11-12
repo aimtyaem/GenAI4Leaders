@@ -20,7 +20,7 @@
                         "background-dark": "#131022",
                     },
                     fontFamily: {
-                        "display": ["Space Grotesk", "sans-serif"]
+                        "display": ["Space+Grotesk", "sans-serif"]
                     },
                     borderRadius: {
                         "DEFAULT": "0.25rem",
@@ -54,12 +54,15 @@
             transform: translateY(-5px);
             box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.2);
         }
+        /* This container is key for both the thumbnail and the iframe */
         .youtube-container {
             position: relative;
             padding-bottom: 56.25%; /* 16:9 aspect ratio */
             height: 0;
             overflow: hidden;
+            width: 100%;
         }
+        .youtube-container img,
         .youtube-container iframe {
             position: absolute;
             top: 0;
@@ -68,6 +71,9 @@
             height: 100%;
             border: 0;
         }
+        .youtube-container img {
+            object-fit: cover;
+        }
     </style>
 </head>
 <body class="bg-background-light dark:bg-background-dark font-display text-gray-800 dark:text-gray-200">
@@ -75,7 +81,6 @@
         <div class="layout-container flex h-full grow flex-col">
             <div class="flex flex-1 justify-center py-5 px-4 sm:px-8 md:px-12 lg:px-20 xl:px-40">
                 <div class="layout-content-container flex flex-col w-full max-w-6xl flex-1">
-                    <!-- Updated Header with Navigation Menu -->
                     <header class="flex flex-col sm:flex-row items-center justify-between whitespace-nowrap border-b border-solid border-white/10 px-4 sm:px-6 py-4 gap-4">
                         <div class="flex items-center gap-4 text-white">
                             <div class="size-6 text-white/80">
@@ -87,7 +92,6 @@
                             <h2 class="text-white text-lg font-bold leading-tight tracking-[-0.015em]">Generative AI Course</h2>
                         </div>
                         
-                        <!-- Navigation Menu -->
                         <nav class="flex items-center gap-6 bg-white/10 dark:bg-white/5 rounded-lg px-4 py-2 backdrop-blur-sm">
                             <a class="nav-active text-white text-sm font-bold leading-normal transition-colors flex items-center gap-1" href="index.html">
                                 <span class="material-symbols-outlined text-base">home</span>
@@ -131,7 +135,6 @@
                                     </div>
                                 </div>
                                 <div class="flex w-full max-w-md flex-col items-stretch gap-3 py-3">
-                                    <!-- Updated "Start Learning" button with external link -->
                                     <a href="https://ai.studio/apps/drive/1NybAP3vLHprm6mSbwhOhT5hsIJ7D2hAa" target="_blank" rel="noopener noreferrer" class="flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-12 px-5 bg-primary text-white text-base font-bold leading-normal tracking-[0.015em] w-full transition-transform hover:scale-105 hover:bg-primary/90">
                                         <span class="truncate">Start Learning</span>
                                     </a>
@@ -173,14 +176,12 @@
                                     </ul>
                                 </div>
 
-                                <!-- New Media Section for Zoom and YouTube -->
                                 <div class="w-full max-w-md mt-8">
                                     <h3 class="text-lg font-bold mb-4 flex items-center gap-2">
                                         <span class="material-symbols-outlined text-primary">video_library</span>
                                         Course Media & Live Sessions
                                     </h3>
                                     <div class="grid grid-cols-1 gap-6">
-                                        <!-- Zoom Channel Card -->
                                         <div class="media-card bg-white/5 dark:bg-white/10 border border-white/10 rounded-xl p-6 flex flex-col items-center gap-4">
                                             <div class="flex items-center gap-3 w-full">
                                                 <span class="material-symbols-outlined text-primary text-2xl">videocam</span>
@@ -190,7 +191,12 @@
                                                 Scan the QR code below to join our live Zoom channel for interactive sessions and Q&A with instructors.
                                             </p>
                                             <div class="bg-white p-4 rounded-lg shadow-lg">
-                                                <img src="https://github.com/aimtyaem/GenAI4Leaders/blob/4824f02ca341ae0f4d27d73b5c10713e590c6946/img/ad50d9c5-39ae-48df-b5fd-d6a2055dce7b.jpg" alt="Zoom Channel QR Code" class="w-48 h-48 object-contain mx-auto">
+                                                <img 
+                                                    id="qrCodeImage"
+                                                    src="https://github.com/aimtyaem/GenAI4Leaders/blob/4824f02ca341ae0f4d27d73b5c10713e590c6946/img/ad50d9c5-39ae-48df-b5fd-d6a2055dce7b.jpg?raw=true" 
+                                                    alt="Zoom Channel QR Code" 
+                                                    class="w-48 h-48 object-contain mx-auto"
+                                                >
                                             </div>
                                             <div class="flex gap-3 w-full">
                                                 <a href="https://us05web.zoom.us/launch/chat/v5/da37ca8564194c02876ee3e8ac4b43c6?id=0cZ92rQv9kxAnmMW72Bng" target="_blank" rel="noopener noreferrer" class="flex-1 flex items-center justify-center gap-2 py-2 px-4 bg-blue-600 hover:bg-blue-700 text-white rounded-lg transition-colors">
@@ -204,7 +210,6 @@
                                             </div>
                                         </div>
 
-                                        <!-- YouTube Video Card -->
                                         <div class="media-card bg-white/5 dark:bg-white/10 border border-white/10 rounded-xl p-6 flex flex-col items-center gap-4">
                                             <div class="flex items-center gap-3 w-full">
                                                 <span class="material-symbols-outlined text-primary text-2xl">play_circle</span>
@@ -213,18 +218,15 @@
                                             <p class="text-gray-300 dark:text-gray-400 text-sm text-center">
                                                 Watch our comprehensive course overview to understand what you'll learn and how to get the most from this program.
                                             </p>
-                                            <div class="youtube-container rounded-lg overflow-hidden">
-                                                <iframe
-    width="560" 
-    height="315"
-    src="https://www.youtube.com/embed/ba4L6bUj5Ak" 
-    title="Generative AI Course Overview" 
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-    allowfullscreen
-    loading="lazy"
-></iframe>
+                                            
+                                            <div id="youtubePlayer" class="youtube-container rounded-lg overflow-hidden cursor-pointer" data-video-id="ba4L6bUj5Ak">
+                                                <img src="https://img.youtube.com/vi/ba4L6bUj5Ak/hqdefault.jpg" alt="Generative AI Course Overview Thumbnail" class="transition-opacity duration-300" loading="lazy">
+                                                <div class="absolute inset-0 flex items-center justify-center bg-black/30 transition-colors hover:bg-black/10">
+                                                    <span class="material-symbols-outlined text-white" style="font-size: 60px;">play_circle</span>
+                                                </div>
                                             </div>
-                                            <a href="https://www.youtube.com/embed/ba4L6bUj5Ak" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 py-3 px-4 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors">
+
+                                            <a href="https://www.youtube.com/watch?v=ba4L6bUj5Ak" target="_blank" rel="noopener noreferrer" class="w-full flex items-center justify-center gap-2 py-3 px-4 bg-red-600 hover:bg-red-700 text-white rounded-lg transition-colors">
                                                 <span class="material-symbols-outlined text-sm">open_in_new</span>
                                                 <span class="font-medium">Open on YouTube</span>
                                             </a>
@@ -241,43 +243,81 @@
 
     <script>
         document.addEventListener('DOMContentLoaded', function() {
-            // Download QR code functionality
+            
+            // FIX 2: Correct QR code download functionality
             const downloadQR = document.getElementById('downloadQR');
             if (downloadQR) {
-                downloadQR.addEventListener('click', function(e) {
+                downloadQR.addEventListener('click', async function(e) {
                     e.preventDefault();
                     e.stopPropagation();
                     
-                    // Create a temporary anchor element to trigger download
-                    const link = document.createElement('a');
-                    link.href = 'https://github.com/aimtyaem/GenAI4Leaders/blob/4824f02ca341ae0f4d27d73b5c10713e590c6946/img/ad50d9c5-39ae-48df-b5fd-d6a2055dce7b.jpg';
-                    link.download = 'img/ad50d9c5-39ae-48df-b5fd-d6a2055dce7b.jpg';
-                    document.body.appendChild(link);
-                    link.click();
-                    document.body.removeChild(link);
+                    const downloadButton = this;
+                    const buttonText = downloadButton.querySelector('span:last-child');
+                    const originalText = buttonText.textContent;
                     
-                    // Provide user feedback
-                    const originalText = downloadQR.querySelector('span:last-child').textContent;
-                    downloadQR.querySelector('span:last-child').textContent = 'Downloading...';
-                    downloadQR.disabled = true;
-                    
-                    setTimeout(() => {
-                        downloadQR.querySelector('span:last-child').textContent = originalText;
-                        downloadQR.disabled = false;
-                    }, 2000);
+                    // Show feedback
+                    buttonText.textContent = 'Downloading...';
+                    downloadButton.disabled = true;
+
+                    try {
+                        // Get the correct image source from the img tag
+                        const imageUrl = document.getElementById('qrCodeImage').src;
+                        
+                        // Fetch the image as a blob
+                        // This is the correct way to download a cross-origin image
+                        const response = await fetch(imageUrl);
+                        if (!response.ok) {
+                            throw new Error('Network response was not ok');
+                        }
+                        const blob = await response.blob();
+                        
+                        // Create a temporary object URL from the blob
+                        const url = URL.createObjectURL(blob);
+                        
+                        // Create a temporary anchor element to trigger download
+                        const link = document.createElement('a');
+                        link.href = url;
+                        link.download = 'zoom-qr-code.jpg'; // Set a clean filename
+                        document.body.appendChild(link);
+                        link.click();
+                        
+                        // Clean up the temporary elements
+                        document.body.removeChild(link);
+                        URL.revokeObjectURL(url);
+
+                    } catch (error) {
+                        console.error('Download failed:', error);
+                        buttonText.textContent = 'Download Failed';
+                    } finally {
+                        // Reset button after a delay
+                        setTimeout(() => {
+                            buttonText.textContent = originalText;
+                            downloadButton.disabled = false;
+                        }, 2000);
+                    }
                 });
             }
 
-            // Add interactivity to the media cards
-            const mediaCards = document.querySelectorAll('.media-card');
-            
-            mediaCards.forEach(card => {
-                card.addEventListener('click', function(e) {
-                    if (e.target.closest('a') || e.target.closest('button')) {
-                        return; // Don't trigger if clicking on links or buttons
-                    }
+            // FIX 5: Add click-to-play for YouTube thumbnail
+            const youtubePlayer = document.getElementById('youtubePlayer');
+            if (youtubePlayer) {
+                youtubePlayer.addEventListener('click', function() {
+                    const videoId = this.dataset.videoId;
+                    
+                    // Create the iframe element
+                    const iframe = document.createElement('iframe');
+                    iframe.setAttribute('src', `https://www.youtube.com/embed/${videoId}?autoplay=1&rel=0`);
+                    iframe.setAttribute('title', 'Generative AI Course Overview');
+                    iframe.setAttribute('frameborder', '0');
+                    iframe.setAttribute('allow', 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share');
+                    iframe.setAttribute('allowfullscreen', 'true');
+                    
+                    // Replace the thumbnail content with the iframe
+                    this.innerHTML = '';
+                    this.appendChild(iframe);
+                    this.classList.remove('cursor-pointer'); // No longer needs to be clickable
                 });
-            });
+            }
         });
     </script>
 </body>
